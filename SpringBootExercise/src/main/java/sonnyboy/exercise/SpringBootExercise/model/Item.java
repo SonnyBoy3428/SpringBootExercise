@@ -1,15 +1,14 @@
 package sonnyboy.exercise.SpringBootExercise.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Item {
     private long itemId;
     private double itemPrice;
     private String itemName;
+    private Set<Order> relatedOrders;
 
     public Item(){
 
@@ -32,6 +31,11 @@ public class Item {
         return this.itemName;
     }
 
+    @OneToMany(mappedBy = "item")
+    public Set<Order> getRelatedOrders(){
+        return this.relatedOrders;
+    }
+
     public void setItemId(long itemId){
         this.itemId = itemId;
     }
@@ -42,6 +46,10 @@ public class Item {
 
     public void setItemName(String itemName){
         this.itemName = itemName;
+    }
+
+    public void setRelatedOrders(Set<Order> relatedOrders){
+        this.relatedOrders = relatedOrders;
     }
 
     @Override

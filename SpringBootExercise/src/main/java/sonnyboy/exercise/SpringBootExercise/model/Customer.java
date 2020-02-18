@@ -1,10 +1,8 @@
 package sonnyboy.exercise.SpringBootExercise.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 public class Customer {
@@ -13,6 +11,7 @@ public class Customer {
     private long customerZip;
     private String customerAddress;
     private Date customerDob;
+    private Set<Order> placedOrders;
 
     public Customer(){
 
@@ -45,6 +44,11 @@ public class Customer {
         return this.customerDob;
     }
 
+    @OneToMany
+    public Set<Order> getPlacedOrders(){
+        return this.placedOrders;
+    }
+
     public void setCustomerId(long customerId){
         this.customerId = customerId;
     }
@@ -63,6 +67,10 @@ public class Customer {
 
     public void setCustomerDob(Date customerDob){
         this.customerDob = customerDob;
+    }
+
+    public void setPlacedOrders(Set<Order> placedOrders){
+        this.placedOrders = placedOrders;
     }
 
     @Override
