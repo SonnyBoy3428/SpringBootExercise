@@ -1,11 +1,12 @@
-package sonnyboy.exercise.SpringBootExercise.model;
+package sonnyboy.exercise.SpringBootExercise.dto;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
+
 import java.sql.Date;
 import java.util.List;
 
-@Entity(name="Customer")
-public class Customer {
+public class CustomerDto {
     private long customerId;
     private String customerName;
     private long customerZip;
@@ -13,38 +14,36 @@ public class Customer {
     private Date customerDob;
     private List<CustomerOrder> customerOrders;
 
-    public Customer(){
-
+    public CustomerDto(@JsonProperty("customerName") String customerName,
+                    @JsonProperty("customerZip") long customerZip,
+                    @JsonProperty("customerAddress") String customerAddress,
+                    @JsonProperty("customerDob") Date customerDob){
+        this.customerName = customerName;
+        this.customerZip = customerZip;
+        this.customerAddress = customerAddress;
+        this.customerDob = customerDob;
     }
 
-    @Column(name="CustomerId")
-    @Id
-    @GeneratedValue
     public long getCustomerId(){
         return this.customerId;
     }
 
-    @Column(name="CustomerName")
     public String getCustomerName(){
         return this.customerName;
     }
 
-    @Column(name="CustomerZip")
     public long getCustomerZip(){
         return this.customerZip;
     }
 
-    @Column(name="CustomerAddress")
     public String getCustomerAddress(){
         return this.customerAddress;
     }
 
-    @Column(name="CustomerDob")
     public Date getCustomerDob(){
         return this.customerDob;
     }
 
-    @OneToMany
     public List<CustomerOrder> getCustomerOrders(){
         return this.customerOrders;
     }
@@ -75,12 +74,13 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Customer{" +
+        return "CustomerDto{" +
                 "customerId=" + customerId +
                 ", customerName='" + customerName + '\'' +
                 ", customerZip=" + customerZip +
                 ", customerAddress='" + customerAddress + '\'' +
                 ", customerDob=" + customerDob +
+                ", customerOrders=" + customerOrders +
                 '}';
     }
 }

@@ -2,51 +2,51 @@ package sonnyboy.exercise.SpringBootExercise.model;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Set;
+import java.util.List;
 
-@Entity
+@Entity(name="Employee")
 public class Employee {
     private long employeeId;
     private String employeeName;
     private long employeeZip;
     private String employeeAddress;
     private Date employeeDob;
-    private Set<Order> supervisedOrders;
+    private List<CustomerOrder> customerOrders;
 
     public Employee(){
 
     }
 
-    @Column
+    @Column(name="EmployeeId")
     @Id
     @GeneratedValue
     public long getEmployeeId(){
         return this.employeeId;
     }
 
-    @Column
+    @Column(name="EmployeeName")
     public String getEmployeeName(){
         return this.employeeName;
     }
 
-    @Column
+    @Column(name="EmployeeZip")
     public long getEmployeeZip(){
         return this.employeeZip;
     }
 
-    @Column
+    @Column(name="EmployeeAddress")
     public String getEmployeeAddress(){
         return this.employeeAddress;
     }
 
-    @Column
+    @Column(name="EmployeeDob")
     public Date getEmployeeDob(){
         return this.employeeDob;
     }
 
     @OneToMany
-    public Set<Order> getSupervisedOrders(){
-        return this.supervisedOrders;
+    public List<CustomerOrder> getCustomerOrders(){
+        return this.customerOrders;
     }
 
     public void setEmployeeId(long employeeId){
@@ -69,18 +69,7 @@ public class Employee {
         this.employeeDob = employeeDob;
     }
 
-    public void setSupervisedOrders(Set<Order> supervisedOrders){
-        this.supervisedOrders = supervisedOrders;
-    }
-
-    @Override
-    public String toString(){
-        return "{" +
-                "'employeeId':" + getEmployeeId() + "," +
-                "'employeeName':'" + getEmployeeName() + "'," +
-                "'employeeZip':" + getEmployeeZip() + "," +
-                "'employeeAddress':'" + getEmployeeAddress() + "'," +
-                "'employeeDob':" + getEmployeeDob()
-                + "}";
+    public void setCustomerOrders(List<CustomerOrder> customerOrders){
+        this.customerOrders = customerOrders;
     }
 }

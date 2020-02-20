@@ -1,39 +1,39 @@
 package sonnyboy.exercise.SpringBootExercise.model;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.List;
 
-@Entity
+@Entity(name="Item")
 public class Item {
     private long itemId;
     private double itemPrice;
     private String itemName;
-    private Set<Order> relatedOrders;
+    private List<CustomerOrderItem> customerOrderItems;
 
     public Item(){
 
     }
 
-    @Column
+    @Column(name="ItemId")
     @Id
     @GeneratedValue
     public long getItemId(){
         return this.itemId;
     }
 
-    @Column
+    @Column(name="ItemPrice")
     public double getItemPrice(){
         return this.itemPrice;
     }
 
-    @Column
+    @Column(name="ItemName")
     public String getItemName(){
         return this.itemName;
     }
 
     @OneToMany(mappedBy = "item")
-    public Set<Order> getRelatedOrders(){
-        return this.relatedOrders;
+    public List<CustomerOrderItem> getCustomerOrderItems(){
+        return this.customerOrderItems;
     }
 
     public void setItemId(long itemId){
@@ -48,16 +48,7 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public void setRelatedOrders(Set<Order> relatedOrders){
-        this.relatedOrders = relatedOrders;
-    }
-
-    @Override
-    public String toString(){
-        return "{" +
-                "'itemId':" + getItemId() + "," +
-                "'itemPrice':'" + getItemPrice() + "'," +
-                "'itemName':" + getItemName()
-                + "}";
+    public void setCustomerOrderItems(List<CustomerOrderItem> customerOrderItems){
+        this.customerOrderItems = customerOrderItems;
     }
 }
