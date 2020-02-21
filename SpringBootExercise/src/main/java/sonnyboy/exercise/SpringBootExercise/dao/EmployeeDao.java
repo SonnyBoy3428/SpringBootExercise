@@ -1,14 +1,15 @@
 package sonnyboy.exercise.SpringBootExercise.dao;
 
+import sonnyboy.exercise.SpringBootExercise.exception.EmployeeNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
 import sonnyboy.exercise.SpringBootExercise.model.Employee;
 
 import java.util.List;
 
 public interface EmployeeDao {
-    Employee addEmployee(Employee employee);
-    Employee deleteEmployee(Employee employee);
-    Employee getEmployee(Employee employee);
+    Employee addEmployee(Employee employee) throws EmployeeNotFoundException;
+    Employee deleteEmployee(Employee employee) throws EmployeeNotFoundException;
+    Employee getEmployee(Employee employee) throws EmployeeNotFoundException;
     List<Employee> getEmployees();
-    List<Employee> getEmployeeForCustomerOrder(CustomerOrder customerOrder);
+    Employee getEmployeeForCustomerOrder(CustomerOrder customerOrder) throws EmployeeNotFoundException;
 }

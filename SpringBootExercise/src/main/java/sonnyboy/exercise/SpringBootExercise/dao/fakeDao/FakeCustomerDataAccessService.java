@@ -2,6 +2,7 @@ package sonnyboy.exercise.SpringBootExercise.dao.fakeDao;
 
 import org.springframework.stereotype.Repository;
 import sonnyboy.exercise.SpringBootExercise.dao.CustomerDao;
+import sonnyboy.exercise.SpringBootExercise.exception.CustomerNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.Customer;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
 
@@ -10,28 +11,42 @@ import java.util.List;
 
 @Repository("fakeCustomer")
 public class FakeCustomerDataAccessService implements CustomerDao {
-    List<Customer> customersDb = new ArrayList<Customer>();
+    List<Customer> customerDb = new ArrayList<Customer>();
 
     @Override
-    public Customer addCustomer(Customer customer) {
-        customersDb.add(customer);
-    }
+    public Customer addCustomer(Customer customer) throws CustomerNotFoundException{
+        if(customer.equals(null)){
+            throw new CustomerNotFoundException("Cannot add an empty customer.");
+        }
 
-    @Override
-    public Customer deleteCustomer(Customer customer) {
-        customersDb.remove(customer);
+        customerDb.add(customer);
 
         return customer;
     }
 
     @Override
-    public Customer getCustomer(Customer customer) {
+    public Customer deleteCustomer(Customer customer) throws CustomerNotFoundException{
+        if(customer.equals(null)){
+            throw new CustomerNotFoundException("Cannot delete an empty customer.");
+        }
+
+        customerDb.remove(customer);
+
+        return customer;
+    }
+
+    @Override
+    public Customer getCustomer(Customer customer) throws CustomerNotFoundException{
         Customer foundCustomer = null;
-        for(Customer customerObject : customersDb){
+        for(Customer customerObject : customerDb){
             if(customerObject.getCustomerId() == customer.getCustomerId()){
                 foundCustomer = customerObject;
                 break;
             }
+        }
+
+        if(foundCustomer.equals(null)){
+            throw new CustomerNotFoundException("Customer with the ID " + customer.getCustomerId() + " does not exist.");
         }
 
         return foundCustomer;
@@ -39,11 +54,16 @@ public class FakeCustomerDataAccessService implements CustomerDao {
 
     @Override
     public List<Customer> getCustomers() {
-        return null;
+
+        return customerDb;
     }
 
     @Override
-    public List<Customer> getCustomerForCustomerOrder(CustomerOrder customerOrder) {
-        return null;
+    public Customer getCustomerForCustomerOrder(CustomerOrder customerOrder) throws CustomerNotFoundException{
+        if(customerOrder.getCustomer().equals(null)){
+            throw new CustomerNotFoundException("Customer order with the ID " + customerOrder.getCustomerOrderId() + " does not relate to a customer.");
+        }
+
+        return customerOrder.getCustomer();
     }
 }
