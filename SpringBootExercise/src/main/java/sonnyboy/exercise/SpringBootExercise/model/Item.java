@@ -3,6 +3,9 @@ package sonnyboy.exercise.SpringBootExercise.model;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * Item entity for the database.
+ */
 @Entity(name="Item")
 public class Item {
     private long itemId;
@@ -13,6 +16,10 @@ public class Item {
     public Item(){
 
     }
+
+    /**
+     * GETTERS
+     */
 
     @Column(name="ItemId")
     @Id
@@ -35,6 +42,10 @@ public class Item {
     public List<CustomerOrderItem> getCustomerOrderItems(){
         return this.customerOrderItems;
     }
+
+    /**
+     * SETTERS
+     */
 
     public void setItemId(long itemId){
         this.itemId = itemId;

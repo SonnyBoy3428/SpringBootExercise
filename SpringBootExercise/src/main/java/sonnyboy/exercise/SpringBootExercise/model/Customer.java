@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * Customer entity for the database.
+ */
 @Entity(name="Customer")
 public class Customer {
     private long customerId;
@@ -16,6 +19,10 @@ public class Customer {
     public Customer(){
 
     }
+
+    /**
+     * GETTERS
+     */
 
     @Column(name="CustomerId")
     @Id
@@ -49,6 +56,10 @@ public class Customer {
         return this.customerOrders;
     }
 
+    /**
+     * SETTERS
+     */
+
     public void setCustomerId(long customerId){
         this.customerId = customerId;
     }
@@ -71,16 +82,5 @@ public class Customer {
 
     public void setCustomerOrders(List<CustomerOrder> customerOrders){
         this.customerOrders = customerOrders;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", customerZip=" + customerZip +
-                ", customerAddress='" + customerAddress + '\'' +
-                ", customerDob=" + customerDob +
-                '}';
     }
 }

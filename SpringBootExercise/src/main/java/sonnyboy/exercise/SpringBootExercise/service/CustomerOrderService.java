@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import sonnyboy.exercise.SpringBootExercise.dao.CustomerOrderDao;
+import sonnyboy.exercise.SpringBootExercise.exception.CustomerOrderNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
 
 @Service
@@ -15,7 +16,7 @@ public class CustomerOrderService {
         this.customerOrderDao = customerOrderDao;
     }
 
-    public boolean addCustomerOrder(CustomerOrder customerOrder){
+    public CustomerOrder addCustomerOrder(CustomerOrder customerOrder) throws CustomerOrderNotFoundException {
         return this.customerOrderDao.addCustomerOrder(customerOrder);
     }
 }

@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * Employee entity for the database.
+ */
 @Entity(name="Employee")
 public class Employee {
     private long employeeId;
@@ -16,6 +19,10 @@ public class Employee {
     public Employee(){
 
     }
+
+    /**
+     * GETTERS
+     */
 
     @Column(name="EmployeeId")
     @Id
@@ -48,6 +55,10 @@ public class Employee {
     public List<CustomerOrder> getCustomerOrders(){
         return this.customerOrders;
     }
+
+    /**
+     * SETTERS
+     */
 
     public void setEmployeeId(long employeeId){
         this.employeeId = employeeId;

@@ -4,6 +4,9 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
+/**
+ * Customer order item (many-to-many relationship) entity for the database.
+ */
 @Entity(name="CustomerOrderItem")
 public class CustomerOrderItem implements Serializable {
     private CustomerOrder customerOrder;
@@ -14,6 +17,10 @@ public class CustomerOrderItem implements Serializable {
     public CustomerOrderItem(){
 
     }
+
+    /**
+     * GETTERS
+     */
 
     @Id
     @ManyToOne
@@ -37,6 +44,10 @@ public class CustomerOrderItem implements Serializable {
         return this.itemPriceSum;
     }
 
+    /**
+     * SETTERS
+     */
+
     public void setCustomerOrder(CustomerOrder customerOrder){
         this.customerOrder = customerOrder;
     }
@@ -52,6 +63,10 @@ public class CustomerOrderItem implements Serializable {
     public void setItemPriceSum(double itemPriceSum){
         this.itemPriceSum = itemPriceSum;
     }
+
+    /**
+     * Equals and Hashcode (necessary for many-to-many)
+     */
 
     @Override
     public boolean equals(final Object o) {
