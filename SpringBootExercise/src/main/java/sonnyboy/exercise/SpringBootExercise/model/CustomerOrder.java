@@ -5,7 +5,7 @@ import java.sql.Date;
 import java.util.List;
 
 /**
- * Customer order entity for the database.
+ * Customer order entity for the datasource.
  */
 @Entity(name="CustomerOrder")
 public class CustomerOrder {

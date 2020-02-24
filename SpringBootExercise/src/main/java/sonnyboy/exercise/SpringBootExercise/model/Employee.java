@@ -5,15 +5,22 @@ import java.sql.Date;
 import java.util.List;
 
 /**
- * Employee entity for the database.
+ * Employee entity for the datasource.
  */
 @Entity(name="Employee")
 public class Employee {
-    private long employeeId;
-    private String employeeName;
-    private long employeeZip;
-    private String employeeAddress;
-    private Date employeeDob;
+    private long id;
+    private String firstName;
+    private String lastName;
+    private long zipCode;
+    private String address;
+    private Date dateOfBirth;
+    private String username;
+    private String password;
+    private String userRole;
+    private String facility;
+
+    private Department department;
     private List<CustomerOrder> customerOrders;
 
     public Employee(){
@@ -24,31 +31,61 @@ public class Employee {
      * GETTERS
      */
 
-    @Column(name="EmployeeId")
+    @Column(name="Id")
     @Id
     @GeneratedValue
-    public long getEmployeeId(){
-        return this.employeeId;
+    public long getId(){
+        return this.id;
     }
 
-    @Column(name="EmployeeName")
-    public String getEmployeeName(){
-        return this.employeeName;
+    @Column(name="FirstName")
+    public String getFirstName(){
+        return this.firstName;
     }
 
-    @Column(name="EmployeeZip")
-    public long getEmployeeZip(){
-        return this.employeeZip;
+    @Column(name="LastName")
+    public String getLastName(){
+        return this.lastName;
     }
 
-    @Column(name="EmployeeAddress")
-    public String getEmployeeAddress(){
-        return this.employeeAddress;
+    @Column(name="ZipCode")
+    public long getZipCode(){
+        return this.zipCode;
     }
 
-    @Column(name="EmployeeDob")
-    public Date getEmployeeDob(){
-        return this.employeeDob;
+    @Column(name="Address")
+    public String getAddress(){
+        return this.address;
+    }
+
+    @Column(name="DateOfBirth")
+    public Date getDateOfBirth(){
+        return this.dateOfBirth;
+    }
+
+    @Column(name="Username")
+    public String getUsername(){
+        return this.username;
+    }
+
+    @Column(name="Password")
+    public String getPassword(){
+        return this.password;
+    }
+
+    @Column(name="UserRole")
+    public String getUserRole(){
+        return this.userRole;
+    }
+
+    @Column(name="Facility")
+    public String getFacility(){
+        return this.facility;
+    }
+
+    @ManyToOne
+    public Department getDepartment(){
+        return this.department;
     }
 
     @OneToMany
@@ -60,25 +97,47 @@ public class Employee {
      * SETTERS
      */
 
-    public void setEmployeeId(long employeeId){
-        this.employeeId = employeeId;
+    public void setId(long id){
+        this.id = id;
     }
 
-    public void setEmployeeName(String employeeName){
-        this.employeeName = employeeName;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 
-    public void setEmployeeZip(long employeeZip){
-        this.employeeZip = employeeZip;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
-    public void setEmployeeAddress(String employeeAddress){
-        this.employeeAddress = employeeAddress;
+    public void setZipCode(long zipCode){
+        this.zipCode = zipCode;
     }
 
-    public void setEmployeeDob(Date employeeDob){
-        this.employeeDob = employeeDob;
+    public void setAddress(String address){
+        this.address = address;
     }
+
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setUserRole(String userRole){
+        this.userRole = userRole;
+    }
+
+    public void setFacility(String facility){
+        this.facility = facility;
+    }
+
+    public void setDepartment(Department department){this.department = department;}
 
     public void setCustomerOrders(List<CustomerOrder> customerOrders){
         this.customerOrders = customerOrders;

@@ -1,7 +1,7 @@
-package sonnyboy.exercise.SpringBootExercise.dao.fakeDao;
+package sonnyboy.exercise.SpringBootExercise.repository.fakeDao;
 
 import org.springframework.stereotype.Repository;
-import sonnyboy.exercise.SpringBootExercise.dao.CustomerDao;
+import sonnyboy.exercise.SpringBootExercise.repository.CustomerRepository;
 import sonnyboy.exercise.SpringBootExercise.exception.CustomerNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.Customer;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository("fakeCustomer")
-public class FakeCustomerDataAccessService implements CustomerDao {
+public class FakeCustomerDataAccessService implements CustomerRepository {
     List<Customer> customerDb = new ArrayList<Customer>();
 
     @Override

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 /**
- * Item entity for the database.
+ * Item entity for the datasource.
  */
 @Entity(name="Item")
 public class Item {

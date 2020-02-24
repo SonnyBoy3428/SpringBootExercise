@@ -5,15 +5,20 @@ import java.sql.Date;
 import java.util.List;
 
 /**
- * Customer entity for the database.
+ * Customer entity for the datasource.
  */
 @Entity(name="Customer")
 public class Customer {
-    private long customerId;
-    private String customerName;
-    private long customerZip;
-    private String customerAddress;
-    private Date customerDob;
+    private long id;
+    private String firstName;
+    private String lastName;
+    private long zipCode;
+    private String address;
+    private Date dateOfBirth;
+    private String username;
+    private String password;
+    private boolean isPrimeCustomer;
+
     private List<CustomerOrder> customerOrders;
 
     public Customer(){
@@ -24,31 +29,51 @@ public class Customer {
      * GETTERS
      */
 
-    @Column(name="CustomerId")
+    @Column(name="Id")
     @Id
     @GeneratedValue
-    public long getCustomerId(){
-        return this.customerId;
+    public long getId(){
+        return this.id;
     }
 
-    @Column(name="CustomerName")
-    public String getCustomerName(){
-        return this.customerName;
+    @Column(name="FirstName")
+    public String getFirstName(){
+        return this.firstName;
     }
 
-    @Column(name="CustomerZip")
-    public long getCustomerZip(){
-        return this.customerZip;
+    @Column(name="LastName")
+    public String getLastName(){
+        return this.lastName;
     }
 
-    @Column(name="CustomerAddress")
-    public String getCustomerAddress(){
-        return this.customerAddress;
+    @Column(name="ZipCode")
+    public long getZipCode(){
+        return this.zipCode;
     }
 
-    @Column(name="CustomerDob")
-    public Date getCustomerDob(){
-        return this.customerDob;
+    @Column(name="Address")
+    public String getAddress(){
+        return this.address;
+    }
+
+    @Column(name="DateOfBirth")
+    public Date getDateOfBirth(){
+        return this.dateOfBirth;
+    }
+
+    @Column(name="Username")
+    public String getUsername(){
+        return this.username;
+    }
+
+    @Column(name="Password")
+    public String getPassword(){
+        return this.password;
+    }
+
+    @Column(name="IsPrimeCustomer")
+    public boolean getIsPrimeCustomer(){
+        return this.isPrimeCustomer;
     }
 
     @OneToMany
@@ -60,24 +85,40 @@ public class Customer {
      * SETTERS
      */
 
-    public void setCustomerId(long customerId){
-        this.customerId = customerId;
+    public void setId(long id){
+        this.id = id;
     }
 
-    public void setCustomerName(String customerName){
-        this.customerName = customerName;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 
-    public void setCustomerZip(long customerZip){
-        this.customerZip = customerZip;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
-    public void setCustomerAddress(String customerAddress){
-        this.customerAddress = customerAddress;
+    public void setZipCode(long zipCode){
+        this.zipCode = zipCode;
     }
 
-    public void setCustomerDob(Date customerDob){
-        this.customerDob = customerDob;
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setIsPrimeCustomer(boolean isPrimeCustomer){
+        this.isPrimeCustomer = isPrimeCustomer;
     }
 
     public void setCustomerOrders(List<CustomerOrder> customerOrders){

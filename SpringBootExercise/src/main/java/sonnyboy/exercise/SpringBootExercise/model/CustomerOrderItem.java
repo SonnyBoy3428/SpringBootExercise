@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 /**
- * Customer order item (many-to-many relationship) entity for the database.
+ * Customer order item (many-to-many relationship) entity for the datasource.
  */
 @Entity(name="CustomerOrderItem")
 public class CustomerOrderItem implements Serializable {

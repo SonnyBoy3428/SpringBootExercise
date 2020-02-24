@@ -1,4 +1,4 @@
-package sonnyboy.exercise.SpringBootExercise.dao;
+package sonnyboy.exercise.SpringBootExercise.repository;
 
 import sonnyboy.exercise.SpringBootExercise.exception.EmployeeNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
