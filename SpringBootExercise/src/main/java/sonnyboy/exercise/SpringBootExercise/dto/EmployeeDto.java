@@ -2,71 +2,130 @@ package sonnyboy.exercise.SpringBootExercise.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
+import sonnyboy.exercise.SpringBootExercise.model.Department;
 
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * The data transfer object for employee entities.
+ */
 public class EmployeeDto {
-    private long employeeId;
-    private String employeeName;
-    private long employeeZip;
-    private String employeeAddress;
-    private Date employeeDob;
+    private long id;
+    private String firstName;
+    private String lastName;
+    private long zipCode;
+    private String address;
+    private Date dateOfBirth;
+    private String username;
+    private String password;
+    private String userRole;
+    private String facility;
+
+    private Department department;
     private List<CustomerOrder> customerOrders;
 
-    public EmployeeDto(@JsonProperty("employeeName") String employeeName,
-                    @JsonProperty("employeeZip") long employeeZip,
-                    @JsonProperty("employeeAddress") String employeeAddress,
-                    @JsonProperty("employeeDob") Date employeeDob){
-        this.employeeName = employeeName;
-        this.employeeZip = employeeZip;
-        this.employeeAddress = employeeAddress;
-        this.employeeDob = employeeDob;
+    public EmployeeDto(){
+
     }
 
-    public long getEmployeeId(){
-        return this.employeeId;
+    /**
+     * GETTERS
+     */
+
+    public long getId(){
+        return this.id;
     }
 
-    public String getEmployeeName(){
-        return this.employeeName;
+    public String getFirstName(){
+        return this.firstName;
     }
 
-    public long getEmployeeZip(){
-        return this.employeeZip;
+    public String getLastName(){
+        return this.lastName;
     }
 
-    public String getEmployeeAddress(){
-        return this.employeeAddress;
+    public long getZipCode(){
+        return this.zipCode;
     }
 
-    public Date getEmployeeDob(){
-        return this.employeeDob;
+    public String getAddress(){
+        return this.address;
+    }
+
+    public Date getDateOfBirth(){
+        return this.dateOfBirth;
+    }
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public String getUserRole(){
+        return this.userRole;
+    }
+
+    public String getFacility(){
+        return this.facility;
+    }
+
+    public Department getDepartment(){
+        return this.department;
     }
 
     public List<CustomerOrder> getCustomerOrders(){
         return this.customerOrders;
     }
 
-    public void setEmployeeId(long employeeId){
-        this.employeeId = employeeId;
+    /**
+     * SETTERS
+     */
+
+    public void setId(long id){
+        this.id = id;
     }
 
-    public void setEmployeeName(String employeeName){
-        this.employeeName = employeeName;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 
-    public void setEmployeeZip(long employeeZip){
-        this.employeeZip = employeeZip;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
-    public void setEmployeeAddress(String employeeAddress){
-        this.employeeAddress = employeeAddress;
+    public void setZipCode(long zipCode){
+        this.zipCode = zipCode;
     }
 
-    public void setEmployeeDob(Date employeeDob){
-        this.employeeDob = employeeDob;
+    public void setAddress(String address){
+        this.address = address;
     }
+
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setUserRole(String userRole){
+        this.userRole = userRole;
+    }
+
+    public void setFacility(String facility){
+        this.facility = facility;
+    }
+
+    public void setDepartment(Department department){this.department = department;}
 
     public void setCustomerOrders(List<CustomerOrder> customerOrders){
         this.customerOrders = customerOrders;

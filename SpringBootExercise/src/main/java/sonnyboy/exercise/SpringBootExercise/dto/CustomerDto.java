@@ -1,86 +1,115 @@
 package sonnyboy.exercise.SpringBootExercise.dto;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import sonnyboy.exercise.SpringBootExercise.model.CustomerOrder;
 
 import java.sql.Date;
 import java.util.List;
 
+/**
+ * The data transfer object for customer entities.
+ */
 public class CustomerDto {
-    private long customerId;
-    private String customerName;
-    private long customerZip;
-    private String customerAddress;
-    private Date customerDob;
+    private long id;
+    private String firstName;
+    private String lastName;
+    private long zipCode;
+    private String address;
+    private Date dateOfBirth;
+    private String username;
+    private String password;
+    private boolean isPrimeCustomer;
+
     private List<CustomerOrder> customerOrders;
 
-    public CustomerDto(@JsonProperty("customerName") String customerName,
-                    @JsonProperty("customerZip") long customerZip,
-                    @JsonProperty("customerAddress") String customerAddress,
-                    @JsonProperty("customerDob") Date customerDob){
-        this.customerName = customerName;
-        this.customerZip = customerZip;
-        this.customerAddress = customerAddress;
-        this.customerDob = customerDob;
+    public CustomerDto(){
+
     }
 
-    public long getCustomerId(){
-        return this.customerId;
+    /**
+     * GETTERS
+     */
+
+    public long getId(){
+        return this.id;
     }
 
-    public String getCustomerName(){
-        return this.customerName;
+    public String getFirstName(){
+        return this.firstName;
     }
 
-    public long getCustomerZip(){
-        return this.customerZip;
+    public String getLastName(){
+        return this.lastName;
     }
 
-    public String getCustomerAddress(){
-        return this.customerAddress;
+    public long getZipCode(){
+        return this.zipCode;
     }
 
-    public Date getCustomerDob(){
-        return this.customerDob;
+    public String getAddress(){
+        return this.address;
+    }
+
+    public Date getDateOfBirth(){
+        return this.dateOfBirth;
+    }
+
+    public String getUsername(){
+        return this.username;
+    }
+
+    public String getPassword(){
+        return this.password;
+    }
+
+    public boolean getIsPrimeCustomer(){
+        return this.isPrimeCustomer;
     }
 
     public List<CustomerOrder> getCustomerOrders(){
         return this.customerOrders;
     }
 
-    public void setCustomerId(long customerId){
-        this.customerId = customerId;
+    /**
+     * SETTERS
+     */
+
+    public void setId(long id){
+        this.id = id;
     }
 
-    public void setCustomerName(String customerName){
-        this.customerName = customerName;
+    public void setFirstName(String firstName){
+        this.firstName = firstName;
     }
 
-    public void setCustomerZip(long customerZip){
-        this.customerZip = customerZip;
+    public void setLastName(String lastName){
+        this.lastName = lastName;
     }
 
-    public void setCustomerAddress(String customerAddress){
-        this.customerAddress = customerAddress;
+    public void setZipCode(long zipCode){
+        this.zipCode = zipCode;
     }
 
-    public void setCustomerDob(Date customerDob){
-        this.customerDob = customerDob;
+    public void setAddress(String address){
+        this.address = address;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth){
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public void setIsPrimeCustomer(boolean isPrimeCustomer){
+        this.isPrimeCustomer = isPrimeCustomer;
     }
 
     public void setCustomerOrders(List<CustomerOrder> customerOrders){
         this.customerOrders = customerOrders;
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerDto{" +
-                "customerId=" + customerId +
-                ", customerName='" + customerName + '\'' +
-                ", customerZip=" + customerZip +
-                ", customerAddress='" + customerAddress + '\'' +
-                ", customerDob=" + customerDob +
-                ", customerOrders=" + customerOrders +
-                '}';
     }
 }

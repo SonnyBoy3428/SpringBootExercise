@@ -36,42 +36,42 @@ public class Customer {
         return this.id;
     }
 
-    @Column(name="FirstName")
+    @Column(name="FirstName", nullable=false)
     public String getFirstName(){
         return this.firstName;
     }
 
-    @Column(name="LastName")
+    @Column(name="LastName", nullable=false)
     public String getLastName(){
         return this.lastName;
     }
 
-    @Column(name="ZipCode")
+    @Column(name="ZipCode", nullable=false)
     public long getZipCode(){
         return this.zipCode;
     }
 
-    @Column(name="Address")
+    @Column(name="Address", nullable=false)
     public String getAddress(){
         return this.address;
     }
 
-    @Column(name="DateOfBirth")
+    @Column(name="DateOfBirth", nullable=false)
     public Date getDateOfBirth(){
         return this.dateOfBirth;
     }
 
-    @Column(name="Username")
+    @Column(name="Username", nullable=false)
     public String getUsername(){
         return this.username;
     }
 
-    @Column(name="Password")
+    @Column(name="Password", nullable=false)
     public String getPassword(){
         return this.password;
     }
 
-    @Column(name="IsPrimeCustomer")
+    @Column(name="IsPrimeCustomer", nullable=false)
     public boolean getIsPrimeCustomer(){
         return this.isPrimeCustomer;
     }
