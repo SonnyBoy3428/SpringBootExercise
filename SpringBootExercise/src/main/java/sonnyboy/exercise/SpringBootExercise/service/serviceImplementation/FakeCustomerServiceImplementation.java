@@ -22,7 +22,13 @@ public class FakeCustomerServiceImplementation implements CustomerService {
             throw new CustomerNotFoundException("Cannot add an empty customer.");
         }
 
-        customer.setId(customerDb.size());
+        if(customer.getId() <= 0){
+            if(!customerDb.isEmpty()){
+                customer.setId(customerDb.size());
+            }else{
+                customer.setId(1);
+            }
+        }
         customerDb.add(customer);
 
         return customer;
@@ -123,7 +129,7 @@ public class FakeCustomerServiceImplementation implements CustomerService {
 
     @Override
     public List<Customer> getAllCustomers() throws CustomerNotFoundException {
-        if(customerDb.equals(null) || customerDb.isEmpty()){
+        if(customerDb.isEmpty()){
             throw new CustomerNotFoundException("No customers exist.");
         }
 

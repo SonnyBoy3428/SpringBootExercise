@@ -4,16 +4,16 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import sonnyboy.exercise.SpringBootExercise.converter.CustomerDtoConverter;
 import sonnyboy.exercise.SpringBootExercise.dto.CustomerDto;
 import sonnyboy.exercise.SpringBootExercise.exception.CustomerNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.Customer;
 import sonnyboy.exercise.SpringBootExercise.service.CustomerService;
 
+/**
+ * REST Api for the customer endpoints.
+ */
 @RequestMapping("api/customer")
 @RestController
 public class CustomerController {
@@ -27,11 +27,37 @@ public class CustomerController {
         this.customerDtoConverter = customerDtoConverter;
     }
 
+    @PostMapping
     public CustomerDto addCustomer(@RequestBody CustomerDto customerDto) throws CustomerNotFoundException {
         Customer customer = customerDtoConverter.convertCustomerDtoToCustomer(customerDto);
+        Customer addedCustomer = customerService.addCustomer(customer);
 
-        CustomerDto addedCustomerDto = customerService.addCustomer(customer);
+        return customerDtoConverter.convertCustomerToCustomerDto(addedCustomer);
+    }
 
+    @PostMapping
+    public CustomerDto deleteCustomer(@RequestBody CustomerDto customerDto) throws CustomerNotFoundException {
+        Customer customer = customerDtoConverter.convertCustomerDtoToCustomer(customerDto);
+        Customer deletedCustomer = customerService.deleteCustomer(customer);
 
+        return customerDtoConverter.convertCustomerToCustomerDto(deletedCustomer);
+    }
+
+    @PostMapping
+    public CustomerDto updateCustomer(@RequestBody CustomerDto customerDto) throws CustomerNotFoundException {
+        Customer foundCustomer = customerService.getCustomerById(customerDto.getId());
+        customerService.deleteCustomer(foundCustomer);
+
+        Customer customer = customerDtoConverter.convertCustomerDtoToCustomer(customerDto);
+        Customer updatedCustomer = customerService.addCustomer(customer);
+
+        return customerDtoConverter.convertCustomerToCustomerDto(deletedCustomer);
+    }
+
+    @GetMapping
+    public CustomerDto getCustomerById(@RequestParam long id) throws CustomerNotFoundException {
+        Customer foundCustomer = customerService.getCustomerById(id);
+
+        return customerDtoConverter.convertCustomerToCustomerDto(foundCustomer);
     }
 }
