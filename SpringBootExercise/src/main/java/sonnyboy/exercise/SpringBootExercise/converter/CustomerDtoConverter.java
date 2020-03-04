@@ -4,6 +4,9 @@ import org.springframework.stereotype.Component;
 import sonnyboy.exercise.SpringBootExercise.dto.CustomerDto;
 import sonnyboy.exercise.SpringBootExercise.model.Customer;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class CustomerDtoConverter {
     public Customer convertCustomerDtoToCustomer(CustomerDto customerDto){
@@ -34,5 +37,15 @@ public class CustomerDtoConverter {
         customerDto.setIsPrimeCustomer(customer.getIsPrimeCustomer());
 
         return customerDto;
+    }
+
+    public List<CustomerDto> convertCustomersToCustomersDto(List<Customer> customers){
+        List<CustomerDto> customersDto = new ArrayList<CustomerDto>();
+        for(Customer customer : customers){
+            CustomerDto customerDto = convertCustomerToCustomerDto(customer);
+            customersDto.add(customerDto);
+        }
+
+        return customersDto;
     }
 }

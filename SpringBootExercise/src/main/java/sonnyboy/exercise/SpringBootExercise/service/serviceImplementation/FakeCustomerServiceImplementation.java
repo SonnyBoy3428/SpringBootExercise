@@ -35,7 +35,7 @@ public class FakeCustomerServiceImplementation implements CustomerService {
     }
 
     @Override
-    public Customer deleteCustomer(Customer customer) throws CustomerNotFoundException {
+    public Customer deleteCustomer(long id) throws CustomerNotFoundException {
         if(customer.equals(null)){
             throw new CustomerNotFoundException("Cannot delete an empty customer.");
         }
@@ -54,7 +54,7 @@ public class FakeCustomerServiceImplementation implements CustomerService {
         for(Customer customerEntity : customerDb){
             if(customerEntity.getId() == customer.getId()){
                 customerDb.remove(customerEntity);
-                customerDb.remove(customer);
+                customerDb.add(customer);
                 break;
             }
         }

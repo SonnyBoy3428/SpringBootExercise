@@ -19,11 +19,11 @@ public interface CustomerService {
 
     /**
      * Deletes a customer from the datasource.
-     * @param customer The customer that is to be deleted.
+     * @param id The customer's ID.
      * @return The deleted customer
      * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
      */
-    Customer deleteCustomer(Customer customer) throws CustomerNotFoundException;
+    Customer deleteCustomer(long id) throws CustomerNotFoundException;
 
     /**
      * Updates a customer in the datasource.
