@@ -61,7 +61,7 @@ public class Customer {
         return this.dateOfBirth;
     }
 
-    @Column(name="Username", nullable=false)
+    @Column(name="Username", nullable=false, unique=true)
     public String getUsername(){
         return this.username;
     }

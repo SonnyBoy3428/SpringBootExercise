@@ -10,30 +10,6 @@ import java.util.List;
  */
 public interface CustomerService {
     /**
-     * Adds a customer to the datasource.
-     * @param customer The customer that is to be added.
-     * @return The added customer.
-     * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
-     */
-    Customer addCustomer(Customer customer) throws CustomerNotFoundException;
-
-    /**
-     * Deletes a customer from the datasource.
-     * @param id The customer's ID.
-     * @return The deleted customer
-     * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
-     */
-    Customer deleteCustomer(long id) throws CustomerNotFoundException;
-
-    /**
-     * Updates a customer in the datasource.
-     * @param customer The customer that is to be updated (already including the updated fields).
-     * @return The updated customer.
-     * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
-     */
-    Customer updateCustomer(Customer customer) throws CustomerNotFoundException;
-
-    /**
      * Gets a customer by ID.
      * @param id The customer's ID.
      * @return The customer with the corresponding ID.
@@ -58,12 +34,21 @@ public interface CustomerService {
     List<Customer> getCustomersByLastName(String lastName) throws CustomerNotFoundException;
 
     /**
-     * Gets customers by their username.
-     * @param username The customers' username.
-     * @return Customers with the corresponding username.
+     * Gets customers by their full name.
+     * @param firstName The customers' first name.
+     * @param lastName The customers' last name.
+     * @return Customers with the corresponding full name.
+     * @throws CustomerNotFoundException Is thrown when no customer can be found with the full name.
+     */
+    List<Customer> getCustomersByFullName(String firstName, String lastName) throws CustomerNotFoundException;
+
+    /**
+     * Gets a customer by username.
+     * @param username The customer's username.
+     * @return Customer with the corresponding username.
      * @throws CustomerNotFoundException Is thrown when no customer can be found with the username.
      */
-    List<Customer> getCustomersByUsername(String username) throws CustomerNotFoundException;
+    Customer getCustomerByUsername(String username) throws CustomerNotFoundException;
 
     /**
      * Gets all customers.
@@ -71,4 +56,28 @@ public interface CustomerService {
      * @throws CustomerNotFoundException Is thrown when no customers can be found.
      */
     List<Customer> getAllCustomers() throws CustomerNotFoundException;
+
+    /**
+     * Adds a customer to the datasource.
+     * @param customer The customer that is to be added.
+     * @return The added customer.
+     * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
+     */
+    Customer addCustomer(Customer customer) throws CustomerNotFoundException;
+
+    /**
+     * Deletes a customer from the datasource.
+     * @param id The customer's ID.
+     * @return The deleted customer
+     * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
+     */
+    Customer deleteCustomer(long id) throws CustomerNotFoundException;
+
+    /**
+     * Updates a customer in the datasource.
+     * @param customer The customer that is to be updated (already including the updated fields).
+     * @return The updated customer.
+     * @throws CustomerNotFoundException Is thrown when the passed customer is empty.
+     */
+    Customer updateCustomer(Customer customer) throws CustomerNotFoundException;
 }

@@ -1,5 +1,8 @@
 package sonnyboy.exercise.SpringBootExercise.exception;
 
+/**
+ * Custom exception for the cases in which employees cannot be retrieved from the datasource.
+ */
 public class EmployeeNotFoundException extends Exception{
     public EmployeeNotFoundException() {
         super();
