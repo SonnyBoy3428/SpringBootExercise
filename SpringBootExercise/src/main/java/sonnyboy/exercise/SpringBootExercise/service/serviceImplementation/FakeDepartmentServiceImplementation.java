@@ -3,7 +3,9 @@ package sonnyboy.exercise.SpringBootExercise.service.serviceImplementation;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import sonnyboy.exercise.SpringBootExercise.exception.DepartmentNotFoundException;
+import sonnyboy.exercise.SpringBootExercise.exception.EmployeeNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.Department;
+import sonnyboy.exercise.SpringBootExercise.model.Employee;
 import sonnyboy.exercise.SpringBootExercise.service.DepartmentService;
 
 import java.util.ArrayList;
@@ -116,5 +118,18 @@ public class FakeDepartmentServiceImplementation implements DepartmentService {
         departmentDb.add(department);
 
         return department;
+    }
+
+    @Override
+    public List<Employee> getEmployeesBelongingToDepartment(long id) throws DepartmentNotFoundException, EmployeeNotFoundException {
+        Department department = getDepartmentById(id);
+
+        List<Employee> employees = department.getEmployees();
+
+        if(employees.equals(null) || employees.isEmpty()){
+            throw new EmployeeNotFoundException("Department does not have any employees yet.");
+        }
+
+        return employees;
     }
 }

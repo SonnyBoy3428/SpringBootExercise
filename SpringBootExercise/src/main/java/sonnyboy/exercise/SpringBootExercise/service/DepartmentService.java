@@ -1,7 +1,9 @@
 package sonnyboy.exercise.SpringBootExercise.service;
 
 import sonnyboy.exercise.SpringBootExercise.exception.DepartmentNotFoundException;
+import sonnyboy.exercise.SpringBootExercise.exception.EmployeeNotFoundException;
 import sonnyboy.exercise.SpringBootExercise.model.Department;
+import sonnyboy.exercise.SpringBootExercise.model.Employee;
 
 import java.util.List;
 
@@ -55,4 +57,13 @@ public interface DepartmentService {
      * @throws DepartmentNotFoundException Is thrown when the department to be updated is empty.
      */
     Department updateDepartment(Department department) throws DepartmentNotFoundException;
+
+    /**
+     * Gets the employees belonging to the department.
+     * @param id Id of the department.
+     * @return The departments's employees.
+     * @throws DepartmentNotFoundException Is thrown when the department does not exist.
+     * @throws EmployeeNotFoundException Is thrown when the employee cannot be fetched.
+     */
+    List<Employee> getEmployeesBelongingToDepartment(long id) throws DepartmentNotFoundException, EmployeeNotFoundException;
 }

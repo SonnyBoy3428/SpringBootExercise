@@ -29,7 +29,7 @@ public class Department {
         return this.id;
     }
 
-    @Column(name="Name")
+    @Column(name="Name", nullable = false, unique = true)
     public String getName(){
         return this.name;
     }
